@@ -17,6 +17,3 @@ else:
 print(f"Finding {address}...")
 prefix = "https://google.com/maps/place/"
 webbrowser.open(prefix+address)
-
-# TODO: add feature to grab address from clipboard
-
