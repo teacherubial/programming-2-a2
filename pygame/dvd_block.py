@@ -43,6 +43,26 @@ class Block():
         if self.y < 0 or self.y + self.height > HEIGHT:
             self.y_vel *= -1
 
+    def draw(self, screen):
+        """draws this block on the screen
+        Arguments:
+            screen - surface we draw on
+
+        Returns:
+            None
+        """
+        pygame.draw.rect(
+            screen,
+            self.colour,
+            [
+                self.x,
+                self.y,
+                self.width,
+                self.height,
+            ]
+        )
+
+
 
 
 def main():
@@ -77,26 +97,8 @@ def main():
         # ----- DRAW
         screen.fill(BLACK)
 
-        pygame.draw.rect(
-            screen,
-            block.colour,
-            [
-                block.x,
-                block.y,
-                block.width,
-                block.height,
-            ]
-        )
-        pygame.draw.rect(
-            screen,
-            second_block.colour,
-            [
-                second_block.x,
-                second_block.y,
-                second_block.width,
-                second_block.height,
-            ]
-        )
+        block.draw(screen)
+        second_block.draw(screen)
 
         # ----- UPDATE
         pygame.display.flip()
