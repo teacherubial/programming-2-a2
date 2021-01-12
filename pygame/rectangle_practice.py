@@ -36,6 +36,14 @@ def main():
     clock = pygame.time.Clock()
 
     rectangle = Rectangle()
+    # TODO: CREATE ANOTHER RECTANGLE
+    #    CHANGE ITS PROPERTIES
+    #    reminder use .notation to change properties
+    #    i.e. rectangle_two.x = 100
+    rectangle_two = Rectangle()
+    rectangle_two.width, rectangle_two.height = (150, 200)
+    rectangle_two.x, rectangle_two.y = (50, 10)
+    rectangle_two.colour = WHITE
 
     # ----- MAIN LOOP
     while not done:
@@ -49,6 +57,8 @@ def main():
         # ----- DRAW
         screen.fill(BLACK)
         pygame.draw.rect(screen, rectangle.colour, (rectangle.x, rectangle.y, rectangle.width, rectangle.height))
+        pygame.draw.rect(screen, rectangle_two.colour, (rectangle_two.x, rectangle_two.y, rectangle_two.width, rectangle_two.height))
+        pygame.draw.circle(screen, (0, 255, 0), (100, 100), 50)
 
         # ----- UPDATE
         pygame.display.flip()
