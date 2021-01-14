@@ -31,6 +31,20 @@ class Block(pygame.sprite.Sprite):
         # Rect (x, y, width, height)
         self.rect = self.image.get_rect()
 
+class Player(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+
+        # image
+        self.image = pygame.image.load("./images/link.png")
+
+        # rect
+        self.rect = self.image.get_rect()
+
+    def update(self):
+        """Move the player with the mouse"""
+        # pygame.mouse.get_pos() -> (x, y)
+        self.rect.center = pygame.mouse.get_pos()
 
 def main():
     pygame.init()
@@ -54,6 +68,9 @@ def main():
         block.rect.y = random.randrange(HEIGHT-block.rect.height)
         all_sprites.add(block)
 
+    player = Player()
+    all_sprites.add(player)
+
     # ----- MAIN LOOP
     while not done:
         # -- Event Handler
@@ -62,6 +79,7 @@ def main():
                 done = True
 
         # ----- LOGIC
+        all_sprites.update()
 
         # ----- DRAW
         screen.fill(BLACK)
