@@ -57,9 +57,11 @@ def main():
     # ----- LOCAL VARIABLES
     done = False
     clock = pygame.time.Clock()
+    score = 0
 
-    # Create a group of sprites for ALL SPRITES
+    # Create a group of sprites
     all_sprites = pygame.sprite.Group()
+    block_sprites = pygame.sprite.Group()
 
     # Make lots of blocks on the screen
     for i in range(NUM_BLOCKS):
@@ -67,6 +69,7 @@ def main():
         block.rect.x = random.randrange(WIDTH-block.rect.width)
         block.rect.y = random.randrange(HEIGHT-block.rect.height)
         all_sprites.add(block)
+        block_sprites.add(block)
 
     player = Player()
     all_sprites.add(player)
@@ -80,6 +83,13 @@ def main():
 
         # ----- LOGIC
         all_sprites.update()
+
+        # sprite group that has the sprites collided with
+        blocks_hit_list = pygame.sprite.spritecollide(player, block_sprites, True)
+
+        for block in blocks_hit_list:
+            score += 1
+            print(score)
 
         # ----- DRAW
         screen.fill(BLACK)
