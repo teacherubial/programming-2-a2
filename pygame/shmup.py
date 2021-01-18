@@ -21,7 +21,8 @@ class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
 
-        self.image = pygame.image.load("./images/galaga_ship.png")
+        self.image = pygame.image.load("./images/galaga_ship.png") # 128x128
+        self.image = pygame.transform.scale(self.image, (64,64))
 
         self.rect = self.image.get_rect()
 
