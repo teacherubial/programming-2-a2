@@ -37,6 +37,7 @@ class Player(pygame.sprite.Sprite):
 
         # image
         self.image = pygame.image.load("./images/link.png")
+        self.image.set_alpha(50)
 
         # rect
         self.rect = self.image.get_rect()
@@ -104,3 +105,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
